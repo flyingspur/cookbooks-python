@@ -58,7 +58,6 @@ class MyDict():
                     return self.map[key_hash]
         except:
             print('Key ' + key + ' does not exist.')
-            return False
 
         return False
 
