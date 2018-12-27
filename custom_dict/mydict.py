@@ -38,9 +38,16 @@ class MyDict():
     def delete(self, key):
         key_hash = self._get_hash(key)
 
-        for kv in self.map[key_hash]:
-            if kv[0]  == key:
-                return kv
+        temp_map = self.map[key_hash].copy()
+
+        for i,v in enumerate(temp_map):
+            if key == v[0]:
+                self.map[key_hash].pop(0)
+
+        if len(self.map[key_hash]) == 0:
+            self.map[key_hash] = None
+
+        return
 
     def find(self):
         pass
@@ -51,4 +58,5 @@ dict1.add('Beans', 5)
 dict1.add('Beans', 10)
 dict1.add('Beans', 30)
 print(dict1.list())
-print(dict1.delete('Beans'))
+dict1.delete('Beans')
+print(dict1.list())
