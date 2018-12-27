@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 
 class MyDict():
-    """A custom implementation of the dict object"""
+"""A custom implementation of the dict object based on based
+on https://github.com/joeyajames/Python/blob/master/HashMap.py
+with my own logic for some of the operations
+"""
 
     def __init__(self, size):
         self.size = size
@@ -28,7 +31,6 @@ class MyDict():
         for kv in self.map[key_hash]:
             if kv[0] == key:
                 exists = True
-
         if exists:
             self.map[key_hash].append(key_value)
 
@@ -37,7 +39,6 @@ class MyDict():
 
     def delete(self, key):
         key_hash = self._get_hash(key)
-
         temp_map = self.map[key_hash].copy()
 
         for i,v in enumerate(temp_map):
@@ -51,7 +52,6 @@ class MyDict():
 
     def find(self, key):
         key_hash = self._get_hash(key)
-
         try:
             for i,v in enumerate(self.map[key_hash]):
                 if key == v[0]:
