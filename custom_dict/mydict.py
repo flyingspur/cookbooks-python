@@ -49,14 +49,26 @@ class MyDict():
 
         return
 
-    def find(self):
-        pass
+    def find(self, key):
+        key_hash = self._get_hash(key)
+
+        try:
+            for i,v in enumerate(self.map[key_hash]):
+                if key == v[0]:
+                    return self.map[key_hash]
+        except:
+            print('Key ' + key + ' does not exist.')
+            return False
+
+        return False
 
 
 dict1 = MyDict(10)
-dict1.add('Beans', 5)
-dict1.add('Beans', 10)
-dict1.add('Beans', 30)
-print(dict1.list())
-dict1.delete('Beans')
-print(dict1.list())
+dict1.add('Pencils', 5)
+dict1.add('Pens', 10)
+dict1.add('Pens', 20)
+dict1.add('Erasers', 30)
+print("ADD: List of items: ", dict1.list())
+dict1.delete('Pencils')
+print("DELETE: List of items: ", dict1.list())
+print("FIND: Item: ", dict1.find('Pens'))
