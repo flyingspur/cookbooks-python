@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 class MyDict():
-"""A custom implementation of the dict object
-"""
+    """A custom implementation of the dict object
+    """
     def __init__(self, size):
         self.size = size
         self.map = [None] * size
@@ -30,6 +30,13 @@ class MyDict():
         for i in range(0, self.size):
             k = self.map[i][0][0]
             if k == key:
-                self.map.pop(i)
+                self.map[i] = None
                 return True
+        return False
+
+    def find(self, key):
+        for i in range(0, self.size):
+            k = self.map[i][0][0]
+            if k == key:
+                return self.map[i]
         return False
