@@ -5,38 +5,42 @@ class MyDict():
     """
     def __init__(self, size):
         self.size = size
-        self.map = [None] * size
+        self.map = [None] * self.size
 
     def list(self):
         return self.map
 
     def add(self, key, value):
-        key_value = [key, value]
+        kv = [key, value]
 
-        for i in range(0, self.size):
-            if self.map[i] is None:
-                self.map[i] = list([key_value])
-                return True
-            else:
-                k = self.map[i][0][0]
+        for l in range(0, len(self.map)):
+            if self.map[l] is not None:
+                k = self.map[l][0][0]
                 if k == key:
-                    self.map[i].append(key_value)
+                    self.map[l].append(kv)
                     return True
-                else:
-                    continue
-        return False
+            if self.map[l] is None:
+                self.map[l] = list([kv])
+                return True
+        else:
+            return False
 
     def delete(self, key):
-        for i in range(0, self.size):
-            k = self.map[i][0][0]
-            if k == key:
-                self.map[i] = None
-                return True
-        return False
+        for l in range(0, len(self.map)):
+            if self.map[l] is not None:
+                k = self.map[l][0][0]
+                if k == key:
+                    self.map[l] = None
+                    return True
+        else:
+            return False
 
     def find(self, key):
-        for i in range(0, self.size):
-            k = self.map[i][0][0]
-            if k == key:
-                return self.map[i]
-        return False
+        for l in range(0, len(self.map)):
+            if self.map[l] is not None:
+                k = self.map[l][0][0]
+                if k == key:
+                    return self.map[l]
+        else:
+            return False
+
